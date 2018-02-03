@@ -28,11 +28,13 @@ nazione -> nationality
 
 Some csv files contains "parziale" in the name. It means "partial", indicating that some problems occurred in that day, causing out-of-service moments.
 
+N.B. the dataset folder contains just an example. 
+
 ## Features
 
 ### Sampling
 
-It is possible to set a reduction factor in order to decrease the total number of data to consider. The sample is chosen randomly and it is also possible to fix a random state (a seed) for the reproducibility.
+It is possible to set a reduction factor in order to decrease the total number of considered data. The sample is chosen randomly and it is also possible to fix a random state (a seed) for the reproducibility. You can change it by setting the global variable "seed" in trap17.py .  
 For further details look at the Function details. 
 
 ### Preprocessing
