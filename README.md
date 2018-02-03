@@ -6,7 +6,7 @@ Data preprocessing and Data analysis
 
 This is a project work on Data Mining. The goal of this project is to find interesting patterns (such as the number of cars which have driven across the same path more than a certain number of times) in a large dataset. In order to do that we need to sample the data, to transform the data in a useful structures and in the end to mine the meaningful information.
 The Dataset we considered is the Trap 17 Dataset, which contains the plates of cars that have driven through a motorway section. 
-For further information about the dataset see the Dataset section and map.pdf .
+For further information about the dataset see the Dataset section and [the map](/map.pdf) .
 
 ## Dataset
 
