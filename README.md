@@ -69,15 +69,8 @@ Even more interesting event is when more than one car have driven across the sam
 In order to do that, it is necessary to analyze the new well structured file (init.csv): basically we first select a subset of the file, which contains just the records with a certain number of time (greater than a chosen threshold), and then we need to plot the data in a clear and meaningful way.
  
 An example:
-
-```
-￼![Alt text](/images/image1.jpg)
-```
-
-```
-![Alt text](/images/image2.jpg)
-￼
-```
+![Alt text](/images/image1.png)
+![Alt text](/images/image2.png)
 
 ## Quick Start
 
@@ -123,10 +116,7 @@ An example:
      ```
 	   python main.py -h 
 	   ```
-     ![Alt text](/images/image3.jpg)
-	  ￼
-	
-
+	   
 ## Function details 
 
 Trap17.py contains several functions, which allow to work with trap17 dataset. It based on pandas library, more specifically:
