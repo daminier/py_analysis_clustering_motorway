@@ -7,9 +7,7 @@ from datetime import datetime
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Resources
-# ---------
-# * Documentation: look at README.txt for any further information
+# * Documentation: look at README.md for any further information
 
 seed=54647
 size = 1 
@@ -176,85 +174,3 @@ def plot(file_name,times=1):
     plt.show()
 
 
-
-# get_patterns('init_Luglio_Giugno_25.csv',3,True)
-# plot('init_Luglio_Giugno_25.csv',3)
-
-
-# file = read_file('init_Luglio_Giugno_25.csv',1,True)
-# df= file.loc[file['volte']>5]
-# print df
-# df.plot(kind='bar')
-# plt.show()
-
-# print("\ninitializing file init\n")
-#file = read_file('03.07.2016.csv') #change here the path, reduction_factor=1 by default 
-# initialize_unique('file_init.csv',file)
-
-# print("\ninitializing file day 2\n")
-# file = read_file('init_Luglio_Giugno_25.csv',1,True)
-# file.loc[file['volte']>5,['tratta','volte']]
-# plt.figure()
-# file.plot.hist()
-
-# initialize_unique('file_day_2.csv',file)
-
-# print("\nupdating file init\n")
-#file = read_file('init_Luglio_Giugno_25.csv',1,True)
-#print file.loc[file['volte']>6,'tratta'].unique()
-
-# update('file_init.csv',file)
-
-# sort('init_Luglio_50.csv',['targa','tratta'])
-# sort('init_Luglio_50_targa.csv','targa')
-#sort('init_Luglio_Giugno_25.csv','tratta')
-
-#get_patterns('init_Luglio_Giugno_25.csv',3)
-# myDictionary= get_patterns('init_Luglio_Giugno_25.csv',5)
-# plt.bar(myDictionary.keys(), myDictionary.values(),color='g')
-# plt.show()
-
-
-
-# import numpy as np
-# import matplotlib.pyplot as plt
-# import matplotlib.patches as patches
-# import matplotlib.path as path
-
-# fig, ax = plt.subplots()
-
-# # Fixing random state for reproducibility
-# np.random.seed(19680801)
-
-
-# # histogram our data with numpy
-
-# data = np.random.randn(1000)
-# n, bins = np.histogram(data, 50)
-
-# file = read_file('init_Luglio_Giugno_25.csv',1,True)
-# data= file.loc[file['volte']>5,['tratta']]
-# n, bins = np.histogram(data, 50)
-# # get the corners of the rectangles for the histogram
-# left = np.array(bins[:-1])
-# right = np.array(bins[1:])
-# bottom = np.zeros(len(left))
-# top = bottom + n
-
-
-# # we need a (numrects x numsides x 2) numpy array for the path helper
-# # function to build a compound path
-# XY = np.array([[left, left, right, right], [bottom, top, top, bottom]]).T
-
-# # get the Path object
-# barpath = path.Path.make_compound_path_from_polys(XY)
-
-# # make a patch out of it
-# patch = patches.PathPatch(barpath)
-# ax.add_patch(patch)
-
-# # update the view limits
-# ax.set_xlim(left[0], right[-1])
-# ax.set_ylim(bottom.min(), top.max())
-
-# plt.show()
