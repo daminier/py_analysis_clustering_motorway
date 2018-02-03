@@ -1,6 +1,6 @@
 # Project Work on Data Mining
 
-Data preprocessing and Data analysis
+Data preprocessing and data analysis
 
 ## About
 
