@@ -54,7 +54,7 @@ The chosen structure is:	targa, tratta, volte  (which means: plate, path, times)
 	targa,tratta,volte 
 	559784,9-18-23-,1  
 	 ```
-* the field “times” is the number of times that a car gets through the same gates in different days. 
+* the field “times” is the number of times that a car drives through the same gates in different days. 
 
 Observations:
 * the path is a string 
