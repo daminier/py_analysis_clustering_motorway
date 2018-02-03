@@ -28,7 +28,7 @@ nazione -> nationality
 
 Some csv files contains "parziale" in the name. It means "partial", indicating that some problems occurred in that day, causing out-of-service moments.
 
-N.B. the dataset folder contains just an example. 
+**N.B.** the dataset folder contains just an example. 
 
 ## Features
 
@@ -141,7 +141,7 @@ The elapsed time and the status of each operation is a significant information, 
 
 ## References 
 
-visit the websites for a brief introduction :
+Visit the websites for a brief introduction :
 
 * http://www.poliziadistato.it/articolo/1659f0710955574304581936
 * https://www.youtube.com/watch?v=aCPWz_8slvk
