@@ -108,7 +108,7 @@ def update(init_file_name,file) :
         count_path=0
         matches=0
 
-        for plate in file['targa'] :
+        for plate in file['targa'].values :
             progress(counter,size)
             counter+=1
             plates = init_file.loc[init_file['targa']==plate]
