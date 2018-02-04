@@ -111,8 +111,8 @@ def update(init_file_name,file) :
         for plate in file['targa'].values :
             progress(counter,size)
             counter+=1
-            plates = init_file.loc[init_file['targa']==plate]
-            if  not plates.empty :               
+            plates = init_file.loc[init_file['targa']==plate].values
+            if  plates!=[] :               
                 paths = init_file.loc[init_file['targa']==plate,'tratta'].values 
                 count_paths=0 
                 for path in paths :                     
