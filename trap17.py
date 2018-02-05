@@ -145,14 +145,14 @@ def sort(file_name,sort_by,kind="mergesort") :
      result = file.sort_values(sort_by,kind=kind)
      result.to_csv(file_name,index=False)
 
-def get_patterns(file_name,times=1,show_plates=False,threshold_tratta=0) :
+def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
     pattern_map = {}
     try :
         df= pd.read_csv(file_name, sep=',',index_col=None)
         df= df.loc[df['volte']>times]
         print "\nSelected subset (times > "+str(times)+"):" 
         for tratta in df['tratta'].unique():
-            if  len(tratta.split('-')) <= threshold_tratta :    
+            if  len(tratta.split('-')) <= plates_threshold :    
                 continue
             plates = df.loc[df['tratta']==tratta,'targa'].values
             if show_plates : 
@@ -167,8 +167,8 @@ def get_patterns(file_name,times=1,show_plates=False,threshold_tratta=0) :
             print k,"\t",v
 
 
-def plot(file_name,times=1):
-    myDictionary= get_patterns(file_name,times)
+def plot(file_name,times=1,plates_threshold=0):
+    myDictionary= get_patterns(file_name,times,False,plates_threshold)
     plt.bar(myDictionary.keys(), myDictionary.values(),color='b')
     plt.ylabel("number of cars")
     plt.xlabel("path")
