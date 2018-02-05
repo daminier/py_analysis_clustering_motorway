@@ -116,6 +116,7 @@ An example:
   
   	 ```
 	   python main.py -p true -t 4 -pt 2 
+	   python main.py -sp true -t 4 -pt 2 
 	   ```
   
 4.	 If you need help :
