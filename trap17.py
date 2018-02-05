@@ -170,6 +170,7 @@ def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
 def plot(file_name,times=1,plates_threshold=0):
     myDictionary= get_patterns(file_name,times,False,plates_threshold)
     plt.bar(myDictionary.keys(), myDictionary.values(),color='b')
+    plt.xticks(rotation='vertical')
     plt.ylabel("number of cars")
     plt.xlabel("path")
     plt.title("Number of cars, which have driven across a path more than "+str(times)+" times")
