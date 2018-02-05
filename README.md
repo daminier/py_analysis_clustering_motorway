@@ -141,7 +141,7 @@ Trap17.py contains several functions, which allow to work with trap17 dataset. I
 
 *	 get_patterns(file_name,times=1,show_plates=False,plates_threshold=0), this function selects from the dataset the items which have times value greater than a certain threshold (the parameter to set this threshold is “times”). By setting the parameter show_plates=True, it shows a table of a selected path and the associated plates. It is possible to set a threshold of the minimum number of gates of a path through the parameter "plates_threshold".
 
-*	 plot(file_name,times=1), it plots an histogram of the number of cars which have driven across a path more than a certain threshold. It uses the function “get_patterns”.
+*	 plot(file_name,times=1,plates_threshold=0), it plots an histogram of the number of cars which have driven across a path more than a certain threshold. It uses the function “get_patterns”.
 
 The elapsed time and the status of each operation is a significant information, which is why it is always shown as an output in the shell.
 
