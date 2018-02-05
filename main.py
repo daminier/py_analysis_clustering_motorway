@@ -10,12 +10,13 @@ def parseArguments() :
     parser.add_argument("-s", "--sort_by", help="sort by column, must be tratta, targa or volte", type=str, default=None)
     parser.add_argument("-p", "--plot", help="plot patterns.", type=bool, default=False)
     parser.add_argument("-t", "--times_filter", help="minimum number of times to filter.", type=int, default=1)
+    parser.add_argument("-pt", "--plates_threshold", help="minimum number of gates in a path.", type=int, default=1)
     parser.add_argument("-sp", "--show_plates", help="show plates.", type=bool, default=False)
     parser.add_argument("--version", action="version", version='%(prog)s - Version 1.0')
     args = parser.parse_args()
     return args
 
-def main(update=False,sort_by=None,plot=False,times_filter=1,show_plates=False) :
+def main(update=False,sort_by=None,plot=False,times_filter=1,show_plates=False,plates_threshold=0) :
     start_time = datetime.now() 
     
     if update :
@@ -23,13 +24,13 @@ def main(update=False,sort_by=None,plot=False,times_filter=1,show_plates=False) 
         for file in files :
             if file.endswith(".csv") :
                 f = trap17.read_file("converted/"+str(file),1,True)
-                trap17.update('init.csv',f)
+                trap17.update('init.csv',f)   
     if sort_by=='targa' or sort_by=='tratta' or sort_by=='volte' :
         trap17.sort('init.csv',sort_by)
     if plot :
-        trap17.plot('init.csv',times_filter)
+        trap17.plot('init.csv',times_filter,plates_threshold)
     if show_plates :
-        trap17.get_patterns('init.csv',times_filter,True)
+        trap17.get_patterns('init.csv',times_filter,True,plates_threshold)
 
     time_elapsed = datetime.now() - start_time 
     print('\nTotal time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed)) 
@@ -38,4 +39,4 @@ def main(update=False,sort_by=None,plot=False,times_filter=1,show_plates=False) 
 if __name__== "__main__" :
     args = parseArguments() 
     print args
-    main(args.update,args.sort_by,args.plot,args.times_filter,args.show_plates)
+    main(args.update,args.sort_by,args.plot,args.times_filter,args.show_plates,args.plates_threshold)
