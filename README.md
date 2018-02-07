@@ -137,11 +137,11 @@ Trap17.py contains several functions, which allow to work with trap17 dataset. I
 
 *	 update(init_file_name,file), given a file, which has been already initialized, this function update an initialized file. Basically it refreshes the column “volte” (times) of an initialized file. When a new plate is found, the function adds a new record. When a plate (which compares in both file but with different path) is found, the function add a new record with the different path.  
 
-*	 sort(file_name,sort_by,kind="mergesort"), if you need to sort the result (you could need it for clustering), you can do it through this function. The parameter “sort_by” must be string or a list of strings which represents the column to take into account. It uses a “mergesort” algorithm by default. 
+*	 sort(file_name,sort_by,kind="mergesort"), if you need to sort the result, you can do it through this function. The parameter “sort_by” must be string or a list of strings which represents the column to take into account. It uses a “mergesort” algorithm by default. 
 
-*	 get_patterns(file_name,times=1,show_plates=False,plates_threshold=0), this function selects from the dataset the items which have times value greater than a certain threshold (the parameter to set this threshold is “times”). By setting the parameter show_plates=True, it shows a table of a selected path and the associated plates. It is possible to set a threshold of the minimum number of gates of a path through the parameter "plates_threshold".
+*	 get_patterns(file_name,times=1,show_plates=False,plates_threshold=0), this function selects from the dataset the items which have times value greater than a certain threshold (the parameter to set this threshold is “times”). By setting the parameter show_plates=True, it shows a table of a selected path and the associated plates. It is possible to set the minimum number of gates in a path through the parameter "plates_threshold".
 
-*	 plot(file_name,times=1,plates_threshold=0), it plots an histogram of the number of cars which have driven across a path more than a certain threshold. It uses the function “get_patterns”.
+*	 plot(file_name,times=1,plates_threshold=0), it plots an histogram about the number of cars which have driven across a path more than a certain threshold. It uses the function “get_patterns”.
 
 The elapsed time and the status of each operation is a significant information, which is why it is always shown as an output in the shell.
 
