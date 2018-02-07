@@ -94,51 +94,38 @@ def initialize_unique(file_name,file):
         time_elapsed = datetime.now() - start_time 
         print(' Time elapsed (hh:mm:ss.ms) {}'.format(time_elapsed))
        
-        
-def update(init_file_name,file) :
-    #given two files, which have been already initialized, this function update the init_file:
-    #-adding new plates
-    #-adding same plates with different path
-    #-refreshing the field "volte" (times) if there is a match (same plate,same path)  
+def update(ifile_name,file_df) :
     start_time = datetime.now()
     try:
-        init_file= pd.read_csv(init_file_name, sep=',',index_col=None)
-        size= len(file['targa']) 
-        counter = 0
-        count_path=0
+        init_file= pd.read_csv(ifile_name, sep=',',index_col=None)
+        ifile = init_file.values
+        print('['+str(ifile_name)+'] size: '+str(len(ifile)))
+        file=file_df.values
+        #size= len(file) 
+        #counter = 0
         matches=0
-
-        for plate in file['targa'].values :
-            progress(counter,size)
-            counter+=1
-            plates = init_file.loc[init_file['targa']==plate].values
-            if  plates!=[] :               
-                paths = init_file.loc[init_file['targa']==plate,'tratta'].values 
-                count_paths=0 
-                for path in paths :                     
-                    if (file.loc[file['targa']==plate,'tratta'].values)[0] == path :
-                        matches+=1                       
-                        times = init_file.loc[init_file['targa']==plate,'volte'].values
-                        times[0]+=1 
-                        init_file.loc[init_file['targa']==plate,'volte'] = times[0]
-                        init_file.to_csv(init_file_name,index=False)
-                    else:
-                        count_paths+=1 
-                        if count_paths==len(paths) :                        
-                            fr = open(init_file_name, "a")
-                            path = file.loc[file['targa']==plate,'tratta'].values
-                            fr.write(str(plate)+","+str(path[0])+","+str(1)+"\n")  
-                            fr.close()               
+        for record in file :
+            # progress(counter,size)
+            # counter+=1  
+            paths =ifile[np.where(ifile[:,0] == record[0]),1]
+            if len(paths[0]) != 0 : 
+                count_path=0
+                for path in paths[0] : 
+                    if record[1] == path :                       
+                        matches+=1
+                        ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2] =  ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2]  +  1                              
+                    else:  
+                        count_path+=1 
+                        if count_path==len(paths[0]) :                            
+                            ifile = np.append(ifile,[record],axis=0)                                                                   
             else :
-                fr = open(init_file_name, "a") 
-                path = file.loc[file['targa']==plate,'tratta'].values
-                fr.write(str(plate)+","+str(path[0])+","+str(1)+"\n")
-                fr.close()
+                ifile = np.append(ifile,[record],axis=0)            
     finally :
-        print('\n number of matches:'+str(matches))
+        pd.DataFrame(ifile,columns=['targa','tratta','volte']).to_csv(ifile_name,index=False)       
+        print(' number of matches:'+str(matches))
         time_elapsed = datetime.now() - start_time 
-        print('Time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed))                      
-
+        print('Time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed))          
+           
 def sort(file_name,sort_by,kind="mergesort") : 
      print("\nsorting file "+file_name+"...")
      file = read_file(file_name,1,True)
@@ -146,11 +133,11 @@ def sort(file_name,sort_by,kind="mergesort") :
      result.to_csv(file_name,index=False)
 
 def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
-    pattern_map = {}
+    pattern_map = {} 
     try :
         df= pd.read_csv(file_name, sep=',',index_col=None)
-        df= df.loc[df['volte']>times]
-        print "\nSelected subset (times > "+str(times)+"):" 
+        df= df.loc[df['volte']>=times]
+        print "\nSelected subset (times >= "+str(times)+"):" 
         for tratta in df['tratta'].unique():
             if  len(tratta.split('-')) <= plates_threshold :    
                 continue
@@ -166,14 +153,11 @@ def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
         for k,v in pattern_map.items():
             print k,"\t",v
 
-
 def plot(file_name,times=1,plates_threshold=0):
     myDictionary= get_patterns(file_name,times,False,plates_threshold)
     plt.bar(myDictionary.keys(), myDictionary.values(),color='b')
     plt.xticks(rotation='vertical')
     plt.ylabel("number of cars")
     plt.xlabel("path")
-    plt.title("Number of cars, which have driven across a path more than "+str(times)+" times")
+    plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times")
     plt.show()
-
-
