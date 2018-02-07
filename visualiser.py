@@ -1,8 +1,6 @@
 import trap17
 import sys
 
-
-
 def main(file_name,times_filter,path_lenght) :
     
     trap17.get_patterns(file_name,int(times_filter),True,int(path_lenght))
