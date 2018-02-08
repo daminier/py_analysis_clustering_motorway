@@ -84,6 +84,8 @@ In order to do that, it is necessary to analyze the new well structured file (in
 An example:
 ![Alt text](/images/image1.png)
 
+You can display the plates which are associated with the paths :
+
 <p align="center">
 <img src="/images/image2.png" width="909" height="540" />
 </p>
