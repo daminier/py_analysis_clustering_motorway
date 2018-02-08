@@ -166,7 +166,7 @@ The elapsed time and the status of each operation is a significant information, 
 
 ## Experiments
 
-In the experiments folder you can find several files, which have been already converted, and the related init.csv, which has been already updated.
+In the experiment folder you can find several files, which have been already converted, and the related init.csv, which has been already updated.
 
  ```
  python main.py -p true -t 2 -pt 2 -sp true
