@@ -87,7 +87,7 @@ An example:
 You can display the plates which are associated with the paths :
 
 <p align="center">
-<img src="/images/image2.png" width="909" height="540" />
+<img src="/images/image2.png" width="809" height="440" />
 </p>
 
 
