@@ -10,7 +10,7 @@ Data preprocessing and data analysis
 	- [Data Analysis](#data-analysis)
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
-  - [Experiments](#Experiments)
+  - [Experiments](#experiments)
   - [References](#references)
 
 ## About
@@ -172,7 +172,9 @@ In the experiments folder you can find several files, which have been already co
  python main.py -p true -t 2 -pt 2 -sp true
   ```
   
-![Alt text](/images/image4.png) ![Alt text](/images/image5.png)
+![Alt text](/images/image4.png)
+
+![](/images/image5.png)
 
 
 ## References 
