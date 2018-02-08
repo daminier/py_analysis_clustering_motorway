@@ -10,6 +10,7 @@ Data preprocessing and data analysis
 	- [Data Analysis](#data-analysis)
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
+  - [Experiments](#Experiments)
   - [References](#references)
 
 ## About
@@ -122,13 +123,21 @@ An example:
      ```
 	   python main.py -sp True -t 3
 	   ```
+	   
   * you can set a threshold for selecting the lenght of the path (the minimum number of gates) : 
   
   	 ```
 	   python main.py -p true -t 4 -pt 2 
 	   python main.py -sp true -t 4 -pt 2 
 	   ```
+	   
+  * if you need to work on another file  : 
   
+  	 ```
+	   python main.py -f path_file
+	   
+	   ```
+	   
 4.	 If you need help :
 
      ```
@@ -154,6 +163,16 @@ Trap17.py contains several functions, which allow to work with trap17 dataset. I
 *	 plot(file_name,times=1,plates_threshold=0), it plots an histogram about the number of cars which have driven across a path more than a certain threshold. It uses the function “get_patterns”.
 
 The elapsed time and the status of each operation is a significant information, which is why it is always shown as an output in the shell.
+
+## Experiments
+
+In the experiments folder you can find several files, which have been already converted, and the related init.csv, which is already updated.
+
+ ```
+ python main.py -p true -t 2 -pt 2 -sp true
+  ```
+  
+![Alt text](/images/image4.png) ![Alt text](/images/image5.png)
 
 
 ## References 
