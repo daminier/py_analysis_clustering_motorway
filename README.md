@@ -174,7 +174,7 @@ In the experiments folder you can find several files, which have been already co
   
 ![Alt text](/images/image4.png)
 
-![](/images/image5.png)
+![](/images/image5.png =411x838)
 
 
 ## References 
