@@ -166,16 +166,16 @@ The elapsed time and the status of each operation is a significant information, 
 
 ## Experiments
 
-In the experiments folder you can find several files, which have been already converted, and the related init.csv, which is already updated.
+In the experiments folder you can find several files, which have been already converted, and the related init.csv, which has been already updated.
 
  ```
  python main.py -p true -t 2 -pt 2 -sp true
   ```
-  
+Output:
+
 ![Alt text](/images/image4.png)
 
-![](/images/image5.png =411x838)
-
+<img src="/images/image5.png" width="411" height="838" />
 
 ## References 
 
