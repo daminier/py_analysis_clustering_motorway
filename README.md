@@ -83,7 +83,11 @@ In order to do that, it is necessary to analyze the new well structured file (in
  
 An example:
 ![Alt text](/images/image1.png)
-![Alt text](/images/image2.png)
+
+<p align="center">
+<img src="/images/image2.png" width="909" height="540" />
+</p>
+
 
 ## Quick Start
 
