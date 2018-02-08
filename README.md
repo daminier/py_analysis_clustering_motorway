@@ -2,6 +2,9 @@
 
 Data preprocessing and data analysis
 
+  - [About](#about)
+
+
 ## About
 
 This is a project work on Data Mining. The goal of this project is to find interesting patterns (such as the number of cars which have driven across the same path more than a certain number of times) in a large dataset. In order to do that we need to sample the data, to transform the data in a useful structures and in the end to mine the meaningful information.
