@@ -175,7 +175,9 @@ Output:
 
 ![Alt text](/images/image4.png)
 
+<p align="center">
 <img src="/images/image5.png" width="411" height="838" />
+</p>
 
 ## References 
 
