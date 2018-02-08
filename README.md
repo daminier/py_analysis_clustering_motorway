@@ -92,20 +92,20 @@ An example:
 	python convert.py 10
 	```
 
-	 the parameter 10 is the chosen reduction factor, the file’s size is divide by 10. 
+	 the parameter 10 is the chosen reduction factor, the file’s size is divided by 10. 
 
-2.	 Secondly you need to aggregate all of the converted files in a single file, init.csv :
+2.	 Secondly you need to aggregate all the converted files in a single file, init.csv :
 	
 	  ```
 	  python main.py -u True
 	  ```
 
-	  This operation normally takes some time.  
+	  This operation normally takes long, depending on the size of the dataset.  
 
 3.	 Thirdly, once the update of init.csv has successfully done, you can use the other parameters to view the 	most interesting patterns:
 	 
 	
-  * you can sort init.csv considering a column, which must be “targa”,”tratta”or ”volte” : 
+  * you can sort init.csv considering a column, which must be “targa”,”tratta” or ”volte” : 
    
     ```
 	   python main.py -s targa
