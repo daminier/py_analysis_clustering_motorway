@@ -6,7 +6,7 @@ from datetime import datetime
 def main(reduction_factor) :
     start_time = datetime.now()  
     print("\ninitializing files...\n")
-    files= os.listdir(os.getcwd()+"/dataset") #sostituire tutto in una cartella os.getcwd()+"/dataset"
+    files= os.listdir(os.getcwd()+"/dataset")
     files_csv = []
     for file in files :
         if file.endswith(".csv"):
