@@ -14,9 +14,10 @@ def main(reduction_factor) :
     
     init = trap17.read_file("dataset/"+str(files_csv[0]),int(reduction_factor))
     trap17.initialize_unique('init.csv',init)
-
+    count=0
     for file in files_csv[1:] :
-        print('-----------------------------------------')
+        count+=1
+        print('------------------'+str(count)+'/'+str(len(files_csv)-1)+'-----------------------')
         f = trap17.read_file("dataset/"+str(file),int(reduction_factor))
         trap17.initialize_unique("converted/"+str(file),f)
 
