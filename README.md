@@ -185,6 +185,18 @@ Output:
 <img src="/images/image5.png" width="411" height="838" />
 </p>
 
+## Go further: clustering 
+
+Unfortunately, we aren't able to cluster properly with the previous two csv structures, so in order to clustering and to show up some significant featerus, we need to trasform the data again. 
+Please note that the new csv structure will be particularly sparse, however this is not a problem. 
+
+ ```
+ targa,tratta1,volte1,tratta2,volte2,tratta3,volte3,...,trattaN,volteN
+ 
+  ```
+### The process 
+
+
 ## References 
 
 Visit the websites for a brief introduction :
