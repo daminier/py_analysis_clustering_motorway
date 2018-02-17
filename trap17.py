@@ -161,3 +161,55 @@ def plot(file_name,times=1,plates_threshold=0):
     plt.xlabel("path")
     plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times")
     plt.show()
+    
+def clustering(file_name,times_thr, path_thr,n_clusters) :  
+    csv= pd.read_csv(file_name, sep=',',index_col=None)
+    csv = csv.loc[csv['volte']>=times_thr]
+    sorted_csv = csv.sort_values('targa')
+    csv_np  = sorted_csv.values
+    plates = sorted_csv['targa'].unique()
+    lista = list()
+    total_paths = np.array([])
+
+    for count,plate in enumerate(plates) :      
+        paths =csv_np[np.where(csv_np[:,0] == plate),1][0]
+        volte =csv_np[np.where(csv_np[:,0] == plate),2][0]     
+        lista.insert(count, [plate])
+        i=0
+        while i < len(paths) :
+            if  len(paths[i].split('-')) <= path_thr : 
+                i+=1   
+                continue       
+            lista[count].append(paths[i])
+            total_paths= np.append(total_paths,paths[i])
+            lista[count].append(volte[i])
+            i+=1
+    total_paths = np.unique(total_paths)
+    data = np.zeros(shape=(len(lista),len(total_paths)), dtype = np.int8)
+    plates = np.array([],dtype=int)
+    for i,e in enumerate(lista) :
+        plates = np.append(plates,e[0])
+    print "selected plates: "+str(plates)+"\nselected paths: " + str(total_paths)+"\nmatrix shape: " + str(data.shape) 
+    for count,element in enumerate(lista) :
+        i=1
+        while i <  len(element) :
+            index = total_paths.tolist().index(element[i])
+            data[count,index] = element[i+1]
+            i+=2
+    print data 
+    kmeans = KMeans(n_clusters=n_clusters).fit(data)
+    clusters_map = {}
+    for cluster in kmeans.labels_ :
+        clusters_map[cluster] = []
+
+    for i,plate in enumerate(lista) :
+        clusters_map[kmeans.labels_[i]].append(plate[0])
+
+    print "\ncluster\tplates"
+    for k,v in clusters_map.items():
+             print k,"\t",v    
+    
+    
+    
+    
+    
