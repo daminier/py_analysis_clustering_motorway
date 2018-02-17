@@ -163,7 +163,26 @@ def plot(file_name,times=1,plates_threshold=0):
     plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times")
     plt.show()
     
-def clustering(file_name,times_thr, path_thr,n_clusters) :  
+def clustering(file_name,times_thr, path_thr,n_clusters) : 
+    """
+    This function return a dictionary, which contains a cluster (as a key) and 
+    the associated plates (as values of that key) 
+    
+     - **parameters**, **types**, **return** and **return types**::
+
+          :param file_name: file name
+          :param times_thr: threshold of times, it is going to select greater values
+          :param path_thr: threshold of the lenght of the paths, it is going to select greater values
+          :param n_cluster: number of clusters for Kmeans algorithm
+          :type file_name: string
+          :type times_thr: int
+          :type path_thr: int 
+          :type n_cluster: int
+          :return: return a dictionary, which contains a cluster (as a key) and the associated plates (as values of that key) 
+          :rtype: dictionary (int, [int,..])
+    
+    """
+    
     csv= pd.read_csv(file_name, sep=',',index_col=None)
     csv = csv.loc[csv['volte']>=times_thr]
     sorted_csv = csv.sort_values('targa')
