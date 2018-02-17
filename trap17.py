@@ -6,6 +6,7 @@ import string
 from datetime import datetime 
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
 # * Documentation: look at README.md for any further information
 
