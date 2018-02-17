@@ -1,6 +1,6 @@
 # Project Work on Data Mining
 
-Data preprocessing and data analysis
+Data preprocessing, data analysis and clustering.
 
   - [About](#about)
   - [Dataset](#dataset)
@@ -15,7 +15,7 @@ Data preprocessing and data analysis
 
 ## About
 
-This is a project work on Data Mining. The goal of this project is to find interesting patterns (such as the number of cars which have driven across the same path more than a certain number of times) in a large dataset. In order to do that we need to sample the data, to transform the data in a useful structures and in the end to mine the meaningful information.
+This is a project work on Data Mining. The goal of this project is to find interesting patterns (such as the number of cars which have driven across the same path more than a certain number of times) in a large dataset. In order to do that we need to sample the data, to transform the data in a useful structures. Moreover, minining the meaningful information and finally clustering the data. 
 The Dataset we considered is the Trap 17 Dataset, which contains the plates of cars that have driven through a motorway section. 
 For further information about the dataset see the Dataset section and [the map](/map.pdf) .
 
@@ -187,13 +187,8 @@ Output:
 
 ## Go further: clustering 
 
-Unfortunately, we aren't able to cluster properly with the previous two csv structures, so in order to clustering and to show up some significant featerus, we need to trasform the data again. 
-Please note that the new csv structure will be particularly sparse, however this is not a problem. 
+Unfortunately, we aren't able to cluster properly with the previous two csv structures, so in order to clustering and to show up some significant featerus, we need to trasform the data. 
 
- ```
- targa,tratta1,volte1,tratta2,volte2,tratta3,volte3,...,trattaN,volteN
- 
-  ```
 ### The process 
 
 
