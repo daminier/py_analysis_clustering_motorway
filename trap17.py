@@ -114,7 +114,8 @@ def update(ifile_name,file_df) :
                 for path in paths[0] : 
                     if record[1] == path :                       
                         matches+=1
-                        ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2] =  ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2]  +  1                              
+                        times=ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2] 
+                        ifile[np.where((ifile[:,0] == record[0])&(ifile[:,1] == record[1])),2] = times  +  1                              
                     else:  
                         count_path+=1 
                         if count_path==len(paths[0]) :                            
