@@ -14,8 +14,6 @@ seed=54647
 size = 1 
 
 def read_file(file_name,reduction_factor=1,csv_flag=False) :
-    #this function read a file using pandas. You can use reduction_factor (default=1) if you you want to reduce the number of lines 
-    #(size=lines/reduction_factor). You can use csv_flag=True if you want to read a well structured csv file.
     global seed
     global size
     num_lines = sum(1 for l in open(file_name)) 
@@ -33,14 +31,12 @@ def read_file(file_name,reduction_factor=1,csv_flag=False) :
     return file
 
 def clean(lista):
-    #a cleaning function, which allows you to get a well structured path (1-2-4-)
     result= ""
     for x in lista : 
         result = str(x) +"-"+result 
     return result   
 
 def progress(count, total, status=''):
-    #this function allows you to see status and progress of the program that is running
     bar_len = 60
     filled_len = int(round(bar_len * count / float(total)))
     percents = round(100.0 * count / float(total), 1)
@@ -49,7 +45,6 @@ def progress(count, total, status=''):
     sys.stdout.flush()
     
 def initialize(file_name,file): 
-    #given a file .csv already opened, this function initialize a new well structured file (targa,tratta,volte).
     start_time = datetime.now()
     global size
     
@@ -75,8 +70,6 @@ def initialize(file_name,file):
         print(' Time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed))
 
 def initialize_unique(file_name,file): 
-    #given a file .csv already opened, this function initialize a new well structured file (targa,tratta,volte).
-    #it's optimized compared to the initialize function. 
     start_time = datetime.now()
     try:
         output = open(file_name, "w")
@@ -88,7 +81,6 @@ def initialize_unique(file_name,file):
             #progress(counter,size)        
             output.write(str(plate)+","+str(clean(file.loc[file['targa']==plate,'varco'].values))+","+str(1)+"\n")
             #counter+=1
-   
     finally:
         output.close()
         print "["+file_name+"] size: "+ str(size)
