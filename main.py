@@ -12,12 +12,13 @@ def parseArguments() :
     parser.add_argument("-p", "--plot", help="plot patterns.", type=bool, default=False)
     parser.add_argument("-t", "--times_filter", help="minimum number of times to filter.", type=int, default=1)
     parser.add_argument("-pt", "--plates_threshold", help="minimum number of gates in a path.", type=int, default=1)
+    parser.add_argument("-c", "--clustering", help="Kmeans number of clusters.", type=int, default=-1)
     parser.add_argument("-sp", "--show_plates", help="show plates.", type=bool, default=False)
     parser.add_argument("--version", action="version", version='%(prog)s - Version 1.0')
     args = parser.parse_args()
     return args
 
-def main(file_name='init.csv',update=False,sort_by=None,plot=False,times_filter=1,show_plates=False,plates_threshold=0) :
+def main(file_name='init.csv',clustering=-1,update=False,sort_by=None,plot=False,times_filter=1,show_plates=False,plates_threshold=0) :
     start_time = datetime.now() 
     
     if update :
@@ -32,11 +33,13 @@ def main(file_name='init.csv',update=False,sort_by=None,plot=False,times_filter=
         trap17.get_patterns(file_name,times_filter,True,plates_threshold)    
     if plot :
         trap17.plot(file_name,times_filter,plates_threshold)
-    
+    if clustering>0 :
+        trap17.clustering(file_name,times_filter,plates_threshold,clustering)
+        
     time_elapsed = datetime.now() - start_time 
     print('\nTotal time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed)) 
 
 
 if __name__== "__main__" :
     args = parseArguments() 
-    main(args.file_name,args.update,args.sort_by,args.plot,args.times_filter,args.show_plates,args.plates_threshold)
+    main(args.file_name,args.clustering,args.update,args.sort_by,args.plot,args.times_filter,args.show_plates,args.plates_threshold)
