@@ -197,11 +197,13 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
             total_paths= np.append(total_paths,paths[i])
             lista[count].append(volte[i])
             i+=1
-    total_paths = np.unique(total_paths)
+    total_paths = np.unique(total_paths)  
+    plates = np.array([],dtype=int) 
+    lista = [x for x in lista if len(x)>1]
+    for x in lista :
+        plates = np.append(plates,x[0]) 
+        
     data = np.zeros(shape=(len(lista),len(total_paths)), dtype = np.int8)
-    plates = np.array([],dtype=int)
-    for i,e in enumerate(lista) :
-        plates = np.append(plates,e[0])
     print "selected plates: "+str(plates)+"\nselected paths: " + str(total_paths)+"\nmatrix shape: " + str(data.shape) 
     for count,element in enumerate(lista) :
         i=1
@@ -220,7 +222,14 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
 
     print "\ncluster\tplates"
     for k,v in clusters_map.items():
-             print k,"\t",v    
+             print k,"\t",v
+    
+    plt.bar(clusters_map.keys(),[len(clusters_map[x]) for x in clusters_map.keys()],color='r')
+    plt.xticks(rotation='vertical')
+    plt.ylabel("number of cars")
+    plt.xlabel("clusters")
+    plt.title("K-Means clustering")
+    plt.show()
     
     
     
