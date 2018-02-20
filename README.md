@@ -190,17 +190,20 @@ Output:
 Unfortunately, we aren't able to cluster properly with the previous two csv structures, so in order to clustering and to show up some significant featerus, we need to trasform the data. 
 
 ### The process 
+
  ```	
-#[plate,path,times]
+#[plate,path1,times1,...,pathN,timesN]
 selected_dataset = [[2638,3-6-7-,2], [4252,1-2-,2,3-6-7-,2], [5262,4-6-9-,3]]
 selected_paths = [1-2-, 3-6-7-, 4-8-9-]
 	
 # K-Means data input:
 #[1-2-, 3-6-7-, 4-8-9-]
-[[0,2,0],
- [2,2,0],
- [0,0,3]]
-	 
+data = [[0,2,0],
+ 	[2,2,0],
+ 	[0,0,3]]
+ 
+ KMeans(n_clusters=n_clusters).fit(data)
+
   ```
 
 
