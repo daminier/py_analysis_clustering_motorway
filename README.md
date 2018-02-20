@@ -11,7 +11,7 @@ Data preprocessing, data analysis and clustering.
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
   - [Experiments](#experiments)
-  - [Clustering](#Go-further:-clustering)
+  - [Clustering](#clustering)
   - [References](#references)
 
 ## About
@@ -186,7 +186,7 @@ Output:
 <img src="/images/image5.png" width="411" height="838" />
 </p>
 
-## Go further: clustering 
+## Clustering 
 
 Unfortunately, we aren't able to cluster properly with the previous two csv structures, so in order to clustering and to show up some significant featerus, we need to trasform the data. 
 
