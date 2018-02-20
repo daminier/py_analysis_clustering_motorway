@@ -11,6 +11,7 @@ Data preprocessing, data analysis and clustering.
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
   - [Experiments](#experiments)
+  - [Clustering](#Go-further:-clustering)
   - [References](#references)
 
 ## About
