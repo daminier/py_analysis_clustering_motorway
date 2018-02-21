@@ -156,8 +156,7 @@ def plot(file_name,times=1,plates_threshold=0):
     plt.xticks(rotation='vertical')
     plt.ylabel("number of cars")
     plt.xlabel("path")
-    plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times")
-    plt.show()
+    plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times\nand path length > "+ str(plates_threshold))
     
 def clustering(file_name,times_thr, path_thr,n_clusters) : 
     """
