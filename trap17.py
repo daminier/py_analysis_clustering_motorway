@@ -222,8 +222,6 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
     silhouette_avg = silhouette_score(data, cluster_labels)
     print "For n_clusters =", n_clusters,"The average silhouette_score is :", silhouette_avg
     sample_silhouette_values = silhouette_samples(data, cluster_labels)
-
-
     clusters_map = {}
     for cluster in kmeans.labels_ :
         clusters_map[cluster] = []
@@ -232,7 +230,6 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
     print "\ncluster\tplates"
     for k,v in clusters_map.items():
              print k,"\t",v
-
     fig, (ax1,ax2) = plt.subplots(1, 2)
     fig.set_size_inches(18, 7)
     ax2.set_title("The visualization of the clustered data.")
@@ -247,11 +244,8 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
     plt.suptitle(("KMeans clustering on sample data "
                   "with n_clusters = %d\nThe average silhouette_score is %0.4f" % (n_clusters,silhouette_avg)),
                  fontsize=14, fontweight='bold')
-
     ax1.bar(clusters_map.keys(),[len(clusters_map[x]) for x in clusters_map.keys() ],color='r')
     ax1.set_ylabel("number of cars")
     ax1.set_xlabel("clusters")
     ax1.set_title("K-Means clustering")
-
-
     plt.show()
