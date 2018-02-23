@@ -62,7 +62,13 @@ The chosen structure is:	targa, tratta, volte  (which means: plate, path, times)
 	559784;18;1.0;2016-06-07 10:22:59;IT 
 	559784;9;1.0;2016-06-07 09:58:06;IT
 	```
-
+	
+  ```
+	targa;varco
+	559784;23
+	559784;18
+	559784;9
+	```
 	it is transformed into:
 	```
 	targa,tratta,volte 
