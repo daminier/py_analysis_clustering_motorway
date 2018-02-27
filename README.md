@@ -143,6 +143,15 @@ You can display the plates which are associated with the paths :
 	   python main.py -f path_file
 	   
 	   ```
+  * for clustering the data using Kmeans (-c [number of clusters] ): 
+  	
+  	 ```
+	   python main.py -c 4
+	   
+	   python main.py -t 3 -pt 2 -c 4
+	   
+	   ```
+	
 	   
 4.	 If you need help :
 
@@ -191,6 +200,7 @@ Unfortunately, we aren't able to cluster properly with the previous two csv stru
 
 ### The process 
 
+The data is rappresented as a matrix with number of columns equal to the number of selected paths and number of rows equal to the number of selected elements :  
  ```	
 #[plate,path1,times1,...,pathN,timesN]
 selected_dataset = [[2638,3-6-7-,2], [4252,1-2-,2,3-6-7-,2], [5262,4-6-9-,3]]
@@ -206,6 +216,9 @@ data = [[0,2,0],
 
   ```
 
+Then we use Kmeans algorithm, which is provided by [scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html), in order to cluster the data. 
+
+For sorting out which is the best number of clusters is used the Silhouette index. 
 
 ## References 
 
