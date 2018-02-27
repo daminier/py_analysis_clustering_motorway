@@ -200,7 +200,7 @@ Unfortunately, we aren't able to cluster properly with the previous two csv stru
 
 ### The process 
 
-The data is rappresented as a matrix with number of columns equal to the number of selected paths and number of rows equal to the number of selected elements :  
+The data is represented as a matrix with number of columns equal to the number of selected paths and number of rows equal to the number of selected elements :  
  ```	
 #[plate,path1,times1,...,pathN,timesN]
 selected_dataset = [[2638,3-6-7-,2], [4252,1-2-,2,3-6-7-,2], [5262,4-6-9-,3]]
