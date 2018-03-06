@@ -7,7 +7,7 @@ Data preprocessing, data analysis and clustering.
   - [Features](#features)
   	- [Sampling](#sampling)
 	- [Preprocessing](#preprocessing)
-	- [Data Analysis](#data-analysis)
+	- [Data overview](#data-overview)
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
   - [Clustering](#clustering)
@@ -76,7 +76,7 @@ Observations:
 * the hyphen is necessary in order to distinguish this kind of paths: 11-1 and 1-11.
 * in this case the other fields are not interesting.  
 
-### Data analysis 
+### Data overview 
 
 The interesting and meaningful patterns are all of those cars which have driven across a path more than a certain number of times.
 Even more interesting event is when more than one car have driven across the same path more than a certain number of times.
@@ -234,6 +234,10 @@ matrix shape : 296 x 73
 <p align="center">
 <img src="/images/image9.png"/>
 </p>
+
+Silhouette index:
+
+![Alt text](/images/image8.png)
 
 
 ## Considerations
