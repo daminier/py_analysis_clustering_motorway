@@ -183,13 +183,28 @@ The elapsed time and the status of each operation is a significant information, 
 ## Experiments
 
 In the experiment folder you can find several files, which have been already converted, and the related init.csv, which has been already updated.
+By considering the months of June, July and March :
+*	conversion time: 6 min
+*	updating time: 57 min
+*	init.csv size: about 347,000 records
+*	reduction factor: 50 
 
- ```
- python main.py -p true -t 2 -pt 2 -sp true
-  ```
 Output:
 
-![Alt text](/images/image4.png)
+```
+ python main.py -t 3 -pt 2 -p True
+  ```
+ ![Alt text](/images/image6.png)
+
+ ```
+ python main.py -t 3 -pt 2 -c 90
+  ```
+  ![Alt text](/images/image7.png)
+
+
+matrix shape : 296 x 73
+  
+
 
 <p align="center">
 <img src="/images/image5.png" width="411" height="838" />
