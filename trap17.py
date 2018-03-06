@@ -18,20 +18,25 @@ size = 1
 
 def read_file(file_name,reduction_factor=1,csv_flag=False) :
     global seed
-    global size
-    num_lines = sum(1 for l in open(file_name)) 
-    size = int(num_lines /reduction_factor)
-    print "["+file_name+"]" + " size: "+str(size)
-    if reduction_factor!=1: 
-        random.seed(seed)
-        skip_idx = random.sample(range(1, num_lines), num_lines - size)
-        file= pd.read_csv(file_name,skiprows=skip_idx, sep=';',index_col=None, usecols=[0,1])
-    else :
-        if csv_flag :
+    if csv_flag :
             file= pd.read_csv(file_name, sep=',',index_col=None)
-        else:
-            file= pd.read_csv(file_name, sep=';',index_col=None, usecols=[0,1])
+    else:
+        file= sample_file(pd.read_csv(file_name, sep=';',index_col=None, usecols=[0,1]),reduction_factor)
     return file
+
+def sample_file(file,reduction_factor=1) :
+    global seed
+    global size 
+    unique_plates = file['targa'].unique()
+    print "found plates :" + str(len(unique_plates))
+    size = int(len(unique_plates)/reduction_factor)
+    random.seed(seed)
+    selected_plates= random.sample(unique_plates, size)
+    print "selected plates : "+ str(len(selected_plates))
+    temp = pd.DataFrame([],columns=['targa','varco'])
+    for plate in selected_plates :
+        temp= temp.append(file.loc[file['targa']==plate], ignore_index=True)
+    return temp   
 
 def clean(lista):
     result= ""
