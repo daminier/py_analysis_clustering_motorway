@@ -10,8 +10,8 @@ Data preprocessing, data analysis and clustering.
 	- [Data Analysis](#data-analysis)
   - [Quick Start](#quick-start)
   - [Function details](#function-details)
-  - [Experiments](#experiments)
   - [Clustering](#clustering)
+  - [Experiments](#experiments)
   - [Considerations](#considerations)
   - [References](#references)
 
@@ -180,33 +180,6 @@ Trap17.py contains several functions, which allow to work with trap17 dataset. I
 
 The elapsed time and the status of each operation is a significant information, which is why it is always shown as an output in the shell.
 
-## Experiments
-
-In the experiment folder you can find several files, which have been already converted, and the related init.csv, which has been already updated.
-By considering the months of June, July and March :
-*	conversion time: 6 min
-*	updating time: 57 min
-*	init.csv size: about 347,000 records
-*	reduction factor: 50 
-
-Output:
-
-```
- python main.py -t 3 -pt 2 -p True
-  ```
- ![Alt text](/images/image6.png)
-
- ```
- python main.py -t 3 -pt 2 -c 90
-  ```
-  ![Alt text](/images/image7.png)
-
-
-matrix shape : 296 x 73
-  
-<p align="center">
-<img src="/images/image9.png"/>
-</p>
 
 ## Clustering 
 
@@ -233,6 +206,35 @@ data = [[0,2,0],
 Then we use Kmeans algorithm, which is provided by [scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html), in order to cluster the data. 
 
 For sorting out which is the best number of clusters, it is used the Silhouette index. In addition, it is also shown a bar chart (the number of elements in each cluster), the rappresention of the clustered data and their centroids. 
+
+## Experiments
+
+In the experiment folder you can find several files, which have been already updated.
+By considering the months of June, July and March :
+*	conversion time: 6 min
+*	updating time: 57 min
+*	init.csv size: about 347,000 records
+*	reduction factor: 50 
+
+Output:
+
+```
+ python main.py -t 3 -pt 2 -p True
+  ```
+ ![Alt text](/images/image6.png)
+
+ ```
+ python main.py -t 3 -pt 2 -c 90
+  ```
+  ![Alt text](/images/image7.png)
+
+
+matrix shape : 296 x 73
+  
+<p align="center">
+<img src="/images/image9.png"/>
+</p>
+
 
 ## Considerations
 
