@@ -244,7 +244,7 @@ Silhouette index:
 
 All in all, I would say that the second goal of this activiy is to get familiar with some techniques, methodologies and libraries of the data mining environment. 
 The model was not complicated on purpose, however it is clear that it is easy to add to the model more details, such as the velocity. It is also possibile to consider other way of defining the path, for istance considering just the last and first gate of a path. 
-Furthermore, an interesting way to explore is the biclustering tecnique, which allows us to cluster simultaneusly two attribute, in this case "targa" (plate) and "tratta" (path).
+Furthermore, an interesting way to explore is the biclustering tecnique, which allows us to cluster simultaneusly two attributes, in this case "targa" (plate) and "tratta" (path).
 
 
 ## References 
