@@ -12,6 +12,7 @@ Data preprocessing, data analysis and clustering.
   - [Function details](#function-details)
   - [Experiments](#experiments)
   - [Clustering](#clustering)
+  - [Considerations](#considerations)
   - [References](#references)
 
 ## About
@@ -163,7 +164,7 @@ You can display the plates which are associated with the paths :
 
 Trap17.py contains several functions, which allow to work with trap17 dataset. It based mostly on pandas library and numpy library, more specifically:
 
-*	 read_file(file_name,reduction_factor=1,csv_flag=False), which helps you to read both csv files (targa;varco;corsia;timestamp;nazione  or  targa,tratta,volte); you need to set the parameter csv_flag=True if you want to read a csv file structured as “ targa,tratta,volte ”. Therefore you can set the reduction factor parameter in order to reduce the file size, skipping randomly some rows. It is set a seed for being able to reproduce the sample. The reduction factor must be an int. The desired size it is calculated as size= total_lines / reduction_factor  .
+*	 read_file(file_name,reduction_factor=1,csv_flag=False), which reduce the number of plates considered, but it does not lose any information. This function helps you to read both csv files (targa;varco;corsia;timestamp;nazione  or  targa,tratta,volte). You need to set the parameter csv_flag=True if you want to read a csv file structured as “ targa,tratta,volte ”. Therefore you can set the reduction factor parameter in order to reduce the file size. It is set a seed for being able to reproduce the sample. The reduction factor must be an int. The desired number of plates it is calculated as size= total_plates / reduction_factor.
 
 *  initialize(file_name,file), which allows you to initialize a csv file structured in this way: “targa,tratta,volte” (file_name is the file name to initialize).  Given a csv file from the dataset, this function generates the path according to the definition, which is explained in Preprocessing section. 
 
@@ -218,7 +219,14 @@ data = [[0,2,0],
 
 Then we use Kmeans algorithm, which is provided by [scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html), in order to cluster the data. 
 
-For sorting out which is the best number of clusters is used the Silhouette index. 
+For sorting out which is the best number of clusters, it is used the Silhouette index. In addition, it is also shown a bar chart (the number of elements in each cluster), the rappresention of the clustered data and their centroids. 
+
+## Considerations
+
+All in all, I would say that the second goal of this activiy is to get familiar with some techniques, methodologies and libraries of the data mining environment. 
+The model was not complicated on purpose, however it is clear that it is easy to add to the model more details, such as the velocity. It is also possibile to consider other way of defining the path, for istance considering just the last and first gate of a path. 
+Furthermore, an interesting way to explore is the biclustering tecnique, which allows us to cluster simultaneusly two attribute, in this case "targa" (plate) and "tratta" (path).
+
 
 ## References 
 
