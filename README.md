@@ -204,10 +204,8 @@ Output:
 
 matrix shape : 296 x 73
   
-
-
 <p align="center">
-<img src="/images/image5.png" width="411" height="838" />
+<img src="/images/image9.png"/>
 </p>
 
 ## Clustering 
