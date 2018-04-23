@@ -17,6 +17,24 @@ seed=54647
 size = 1 
 
 def read_file(file_name,reduction_factor=1,csv_flag=False) :
+    """
+    This function can reduce the number of plates considered, but it does not lose any information and
+    it helps you to read both csv files (targa;varco;corsia;timestamp;nazione or targa,tratta,volte).
+    You need to set the parameter csv_flag=True if you want to read a csv file structured as “ targa,tratta,volte ”. 
+    Therefore you can set the reduction factor parameter in order to reduce the file size. It is set a seed for being able to 
+    reproduce the sample. The reduction factor must be an int. 
+    The desired number of plates it is calculated as size= total_plates / reduction_factor.
+    
+     - **parameters**, **types**, **return** and **return types**::
+          :param file_name: file name
+          :param reduction_factor: the number of total plates it will divided by this number  
+          :param csv_flag: if True you are reading a csv file with seperator = ','
+          :type file_name: string
+          :type reduction_factor: int
+          :type csv_flag: Boolean 
+          :return: return the file readed 
+          :rtype: Pandas.DataFrame 
+    """
     global seed
     if csv_flag :
             file= pd.read_csv(file_name, sep=',',index_col=None)
@@ -51,8 +69,10 @@ def progress(count, total, status=''):
     bar = '=' * filled_len + '-' * (bar_len - filled_len)
     sys.stdout.write('[%s] %s%s %s\r' % (bar, percents, '%', status))
     sys.stdout.flush()
-    
+
+'''    
 def initialize(file_name,file): 
+    
     start_time = datetime.now()
     global size
     
@@ -76,8 +96,23 @@ def initialize(file_name,file):
         print "\n ["+file_name+"] size: "+ str(rows)+"\n"
         time_elapsed = datetime.now() - start_time 
         print(' Time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed))
+'''
 
-def initialize_unique(file_name,file): 
+def initialize_unique(file_name,file):
+    
+    """
+     which allows you to initialize a csv file structured in this way: “targa,tratta,volte” (file_name is the file name to initialize). 
+     Given a csv file from the dataset, this function generates the path according to the definition,
+     which is explained in Preprocessing section.
+    
+     - **parameters**, **types**, **return** and **return types**::
+          :param file_name: file name 
+          :param file: it is a DataFrame 
+          :type file_name: string
+          :type file: Pandas.DataFrame        
+          :return: None 
+          :rtype: None   
+    """
     start_time = datetime.now()
     try:
         output = open(file_name, "w")
@@ -96,6 +131,20 @@ def initialize_unique(file_name,file):
         print(' Time elapsed (hh:mm:ss.ms) {}'.format(time_elapsed))
        
 def update(ifile_name,file_df) :
+    
+     """
+      given a file, which has been already initialized, this function update an initialized file. Basically it refreshes the 
+      column “volte” (times) of aninitialized file. When a new plate is found, the function adds a new record. When a plate
+      (which compares in both file but with different path) is found, the function add a new record with the different path.   
+    
+    - **parameters**, **types**, **return** and **return types**::
+          :param ifile_name: an initialized file name 
+          :param file_df: a DataFrame 
+          :type file_name: string
+          :type file: Pandas.DataFrame        
+          :return: None 
+          :rtype: None  
+    """ 
     start_time = datetime.now()
     try:
         init_file= pd.read_csv(ifile_name, sep=',',index_col=None)
@@ -135,6 +184,25 @@ def sort(file_name,sort_by,kind="mergesort") :
      result.to_csv(file_name,index=False)
 
 def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
+     """
+    this function selects from the dataset the items which have times value greater than a certain threshold 
+    (the parameter to set this threshold is “times”). By setting the parameter show_plates=True, 
+    it shows a table of a selected path and the associated plates. It is possible to set the minimum number
+    of gates in a path through the parameter "plates_threshold".   
+    
+    - **parameters**, **types**, **return** and **return types**::
+          :param file_name: the inizialized file name 
+          :param times: number of times 
+          :param show_plates: show the associated plates
+          :param plates_threshold : the minimum numbe of gates 
+          :type file_name: string
+          :type times:  int
+          :type show_plates:  Boolean
+          :type plates_threshold:  int
+          :return: dictionary of path and the associated plates or the total number of plates
+          :rtype: dictionary
+    
+    """
     pattern_map = {} 
     try :
         df= pd.read_csv(file_name, sep=',',index_col=None)
@@ -156,6 +224,22 @@ def get_patterns(file_name,times=1,show_plates=False,plates_threshold=0) :
             print k,"\t",v
 
 def plot(file_name,times=1,plates_threshold=0):
+    
+    """
+      it plots an histogram about the number of cars which have driven across a path more than a certain threshold. 
+      It uses the function “get_patterns”.      
+    
+    - **parameters**, **types**, **return** and **return types**::
+          :param file_name: the initialized file name 
+          :param times: number of times 
+          :param plates_threshold : the minimum numbe of gates 
+          :type file_name: string
+          :type times:  int  
+          :type plates_threshold:  int
+          :return: None 
+          :rtype: None
+    """
+    
     myDictionary= get_patterns(file_name,times,False,plates_threshold)
     plt.bar(myDictionary.keys(), myDictionary.values(),color='b')
     plt.xticks(rotation='vertical')
@@ -169,7 +253,6 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
     the associated plates (as values of that key) 
     
      - **parameters**, **types**, **return** and **return types**::
-
           :param file_name: file name
           :param times_thr: threshold of times, it is going to select greater values
           :param path_thr: threshold of the lenght of the paths, it is going to select greater values
@@ -180,9 +263,7 @@ def clustering(file_name,times_thr, path_thr,n_clusters) :
           :type n_cluster: int
           :return: return a dictionary, which contains a cluster (as a key) and the associated plates (as values of that key) 
           :rtype: dictionary (int, [int,..])
-    
     """
-    
     csv= pd.read_csv(file_name, sep=',',index_col=None)
     csv = csv.loc[csv['volte']>=times_thr]
     sorted_csv = csv.sort_values('targa')
