@@ -246,6 +246,54 @@ def plot(file_name,times=1,plates_threshold=0):
     plt.ylabel("number of cars")
     plt.xlabel("path")
     plt.title("Number of cars, which have driven across a path more than or equal to "+str(times)+" times\nand path length > "+ str(plates_threshold))
+
+    
+def clustering_2(df,n_clusters=2,times_thr=1) :
+    
+    start_time = datetime.now()
+    if times_thr >1:
+     df = df.loc[csv['volte']>=times_thr]
+
+    dictionry_path = {}
+    data = np.zeros(shape=(len(df['tratta'].values),2), dtype = np.int8)
+    counter_path = 0
+
+    for count,element in enumerate(df.values): 
+        if element[1] in dictionry_path :
+            data[count,0] = dictionry_path[element[1]]
+            data[count,1] = element[2]
+        else :
+            counter_path+=1
+            dictionry_path[element[1]]= counter_path
+            data[count,0] = counter_path
+            data[count,1] = element[2]
+
+    print "size:"+ str(data.size)
+    
+    clusterer= KMeans(n_clusters=n_clusters, random_state=10)
+    kmeans = clusterer.fit(data)
+    cluster_labels = clusterer.fit_predict(data)
+    silhouette_avg = silhouette_score(data, cluster_labels)
+    print "\nFor n_clusters =", n_clusters,"The average silhouette_score is :", silhouette_avg
+    time_elapsed = datetime.now() - start_time 
+    print('Time elapsed (hh:mm:ss.ms) {}\n'.format(time_elapsed))                      
+    sample_silhouette_values = silhouette_samples(data, cluster_labels)                  
+    fig, (ax1,ax2) = plt.subplots(1, 2)
+    fig.set_size_inches(18, 7)
+    ax2.set_title("The visualization of the clustered data.")
+    ax2.set_xlabel("Feature space for the 1st feature")
+    ax2.set_ylabel("Feature space for the 2nd feature")
+    colors = cm.spectral(cluster_labels.astype(float) / n_clusters)
+    ax2.scatter(data[:, 0], data[:, 1], marker='.', s=30, lw=0, alpha=0.7,c=colors, edgecolor='k')
+    centers = clusterer.cluster_centers_
+    ax2.scatter(centers[:, 0], centers[:, 1], marker='o',c="white", alpha=1, s=200, edgecolor='k')
+    for i, c in enumerate(centers):
+        ax2.scatter(c[0], c[1], marker='$%d$' % i, alpha=1, s=50, edgecolor='k')
+    plt.suptitle(("KMeans clustering on sample data "
+                  "with n_clusters = %d\nThe average silhouette_score is %0.6f" % (n_clusters,silhouette_avg)),
+                 fontsize=14, fontweight='bold')
+    plt.show()
+    
     
 def clustering(file_name,times_thr, path_thr,n_clusters) : 
     """
